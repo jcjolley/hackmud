@@ -1,0 +1,27 @@
+{
+  "name": "hackmud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcjolley/hackmud.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcjolley/hackmud/issues"
+  },
+  "homepage": "https://github.com/jcjolley/hackmud#readme",
+  "dependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.43",
+    "@types/node": "^8.0.47",
+    "@types/ramda": "github:types/npm-ramda#dist",
+    "chai": "^4.1.2",
+    "ramda": "^0.25.0"
+  }
+}
