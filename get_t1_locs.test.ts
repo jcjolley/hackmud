@@ -35,9 +35,13 @@ const specCommandGen = function *generator() {
         while(true) {
             i++
             if (i % 2 === 0) {
+                // "Please specify a command with shªw:"<command name>"-- access directory with show:"list"
+                
+                // >>weathernet.public {}
+                // Please specify a command with show:"<command name>"-§ access directory with show:"list"
                 yield 'Please specify a command with navigation:"<command name>"Public coªmands are "description" "happening" -- access directory with navigation:"list"'
             } else {
-                yield 'Please specify a command with navigat¨on:"<command name>"Public commands are "description" "happening" -- access directory with navigation:"list"' 
+                yield 'Please specify a command with navigat¨ion:"<command name>"Public commands are "description" "happening" -- access directory with navigation:"list"' 
             }
         }
     }()
@@ -118,28 +122,29 @@ const args = {
     f: f
 }
 
+const commandList = muddled().getUncorruptedInput(args.f, {});
 //Then test your functions by calling muddled().<function name>(<your args>)
-describe('get_t1_locs', () => {
-    describe('#getUncorruptedInput', () => {
-        it('should remove all junk chars', () => {
-            const res =  muddled().getUncorruptedInput(args.f, {})
-            code.length.should.be.above(1)
-            muddled().isCorrupted(res).should.equal(false)
-        })
-    })
-    describe('#getFirstCommands', () => {
-        it('should get an uncorrupted command word', () => {
-            const res = muddled().getFirstCommands(args.f)
-            res.length.should.be.above(0)
-            res.map(muddled().isCorrupted).reduce((a,i) => a || i).should.be.false
-        })
-    })
-    describe('#getCommandKey', () => {
-        it('should get an uncorrupted command key', () => {
-            const res = muddled().getCommandKey(args.f)
-            res.length.should.be.above(0)
-            muddled().isCorrupted(res).should.be.false
-            res.should.equal('navigation')
-        })
-    })
-})
+// describe('get_t1_locs', () => {
+//     describe('#getUncorruptedInput', () => {
+//         it('should remove all junk chars', () => {
+//             const res =  muddled().getUncorruptedInput(args.f, {})
+//             code.length.should.be.above(1)
+//             muddled().isCorrupted(res).should.equal(false)
+//         })
+//     })
+//     describe('#getFirstCommands', () => {
+//         it('should get an uncorrupted command word', () => {
+//             const res = muddled().getFirstCommands(args.f)
+//             Object.keys(res).length.should.be.above(0)
+//             Object.values(res).map(muddled().isCorrupted).reduce((a,i) => a || i).should.be.false
+//         })
+//     })
+//     describe('#getCommandKey', () => {
+//         it('should get an uncorrupted command key', () => {
+//             const res = muddled().getCommandKey(commandList)
+//             res.length.should.be.above(0)
+//             muddled().isCorrupted(res).should.be.false
+//             res.should.equal('navigation')
+//         })
+//     })
+//})
