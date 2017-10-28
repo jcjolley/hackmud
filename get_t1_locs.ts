@@ -160,6 +160,22 @@ function(context, args) {
                              
     }
 
+    function batchLocsForCracker(locs: string[]) {
+        let batches = []
+        let batchSize = 4
+        let str = "{ "
+
+        for(let i = 0; i < locs.length; i++) {
+            str += `l${i % (batchSize + 1)}: #s.${locs[i]}, `
+            if (i % (batchSize + 1) === batchSize || i === locs.length - 1) {
+                str += ` n: ${(i % (batchSize + 1)) + 1}}`
+                batches.push(str);
+                str = "{ "
+            }
+        }
+
+        return batches
+    }
     /**
      * @param {function(): string} fn 
      */
@@ -175,7 +191,7 @@ function(context, args) {
         const passkey = getPasskey(fn, key, directory, password)
         const projectStrings = getProjectStrings(blog, keys)
         locs = getLocs(fn, projectStrings, key, directory, passkey, password)
-        return locs
+        return batchLocsForCracker(locs)
     }
     
     return main(args.f)
